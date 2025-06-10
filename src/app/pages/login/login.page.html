@@ -1,0 +1,29 @@
+<ion-content class="background-img" scroll="false">
+  <div class="overlay"></div>
+
+  <div class="login-box">
+    <h1 class="title">&lt;Bibliomancia&gt;</h1>
+    <p class="subtitle">Inicia sesión para hacer seguimiento de tus lecturas</p>
+
+    <ion-item lines="none" class="input-item">
+      <ion-label position="stacked">Usuario</ion-label>
+      <ion-input type="text" [(ngModel)]="username"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="input-item">
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input type="password" [(ngModel)]="password"></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" color="tertiary" class="login-button" (click)="login()">
+      Entrar
+    </ion-button>
+
+    <p class="register-text">¿No tienes cuenta?</p>
+    <p class="register-text2">
+      <a [routerLink]="['/registro']">Regístrate aquí</a>
+    </p>
+  </div>
+</ion-content>
+
+

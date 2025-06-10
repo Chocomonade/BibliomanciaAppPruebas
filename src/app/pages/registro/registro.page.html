@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Crear Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="home-box">
+      <h1 class="title">✨ Bienvenid&#64; ✨</h1>
+
+      <ion-item lines="none" class="input-item">
+        <ion-label position="stacked">Nombre de usuario *</ion-label>
+        <ion-input 
+          [(ngModel)]="nombreUsuario" 
+          placeholder="Ingresa tu nombre de usuario"
+          [class.error]="!nombreUsuario.trim() && nombreUsuario !== ''"
+        ></ion-input>
+      </ion-item>
+      
+      <ion-item lines="none" class="input-item">
+        <ion-label position="stacked">Contraseña *</ion-label>
+        <ion-input 
+          [(ngModel)]="password" 
+          placeholder="Mínimo 6 caracteres"
+          type="password"
+          [class.error]="!password.trim() && password !== ''"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="input-item">
+        <ion-label position="stacked">Nivel de lectura</ion-label>
+        <ion-select [(ngModel)]="nivel" interface="alert" placeholder="Selecciona una opción">
+          <ion-select-option value="Básica">📘 Bajo</ion-select-option>
+          <ion-select-option value="Media">📊 Medio</ion-select-option>
+          <ion-select-option value="Superior">🏆 Alto</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <!-- Implementación del mat-datepicker -->
+      <div class="datepicker-container">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Fecha de nacimiento</mat-label>
+          <input 
+            matInput 
+            [matDatepicker]="picker" 
+            [(ngModel)]="fechaNacimiento"
+            [max]="fechaMaxima"
+            placeholder="Selecciona tu fecha de nacimiento"
+            readonly
+          >
+          <mat-hint>DD/MM/AAAA</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker [startAt]="fechaMaxima"></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="botones-row">
+        <ion-button color="tertiary" (click)="registrar()">
+          <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+          Registrarse
+        </ion-button>
+        <div class="volver-login">
+        <p>¿Ya tienes cuenta?</p>
+        <a (click)="volverAlLogin()">Inicia sesión aquí</a>
+        </div>
+
+      </div>
+    </div>
+</ion-content>
+
+

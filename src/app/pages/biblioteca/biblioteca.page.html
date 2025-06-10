@@ -1,0 +1,195 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mi Biblioteca</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cambiarVista()">
+        <ion-icon [name]="vistaGrid ? 'list' : 'grid'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="biblioteca-container">
+    
+    <!-- Filtros y búsqueda -->
+    <div class="filtros-section">
+      <ion-searchbar
+        [(ngModel)]="filtroTexto"
+        (ionInput)="filtrarLibros()"
+        placeholder="Buscar en mi biblioteca..."
+        debounce="300">
+      </ion-searchbar>
+      
+      <div class="filtros-chips">
+        <ion-chip 
+          [color]="filtroEstado === 'todos' ? 'primary' : 'medium'"
+          (click)="filtrarPorEstado('todos')">
+          <ion-label>Todos ({{ librosTotal }})</ion-label>
+        </ion-chip>
+        <ion-chip 
+          [color]="filtroEstado === 'leyendo' ? 'success' : 'medium'"
+          (click)="filtrarPorEstado('leyendo')">
+          <ion-label>Leyendo ({{ contarPorEstado('leyendo') }})</ion-label>
+        </ion-chip>
+        <ion-chip 
+          [color]="filtroEstado === 'pendiente' ? 'warning' : 'medium'"
+          (click)="filtrarPorEstado('pendiente')">
+          <ion-label>Pendientes ({{ contarPorEstado('pendiente') }})</ion-label>
+        </ion-chip>
+        <ion-chip 
+          [color]="filtroEstado === 'terminado' ? 'tertiary' : 'medium'"
+          (click)="filtrarPorEstado('terminado')">
+          <ion-label>Leídos ({{ contarPorEstado('terminado') }})</ion-label>
+        </ion-chip>
+        <ion-chip 
+          [color]="filtroEstado === 'terminado' ? 'tertiary' : 'medium'"
+          (click)="filtrarPorEstado('terminado')">
+          <ion-label>Pausados ({{ contarPorEstado('pausado') }})</ion-label>
+        </ion-chip>
+      </div>
+    </div>
+
+    <!-- Botón agregar libro -->
+    <ion-button 
+      expand="block" 
+      fill="outline" 
+      class="agregar-libro-btn"
+      (click)="agregarLibro()">
+      <ion-icon name="book" slot="start"></ion-icon>
+      <ion-icon name="add" slot="start"></ion-icon>
+      Agregar libro a mi biblioteca
+    </ion-button>
+
+    <!-- Vista Grid -->
+    <div *ngIf="vistaGrid" class="libros-grid">
+      <div *ngFor="let libro of librosFiltrados" class="libro-card-grid">
+        <div class="portada-container">
+          <img [src]="libro.portada" [alt]="libro.titulo" class="portada-libro">
+          <div class="estado-badge" [ngClass]="'estado-' + libro.estado">
+            <ion-icon [name]="getEstadoIcon(libro.estado)"></ion-icon>
+          </div>
+          <div *ngIf="libro.progreso && libro.progreso > 0" class="progreso-overlay">
+            <ion-progress-bar [value]="libro.progreso" color="success"></ion-progress-bar>
+          </div>
+        </div>
+        <div class="libro-info-grid">
+          <h3>{{ libro.titulo }}</h3>
+          <p class="autor">{{ libro.autor }}</p>
+          <div class="acciones-grid">
+            <ion-button 
+              *ngIf="libro.estado === 'pendiente'" 
+              fill="clear" 
+              size="small" 
+              (click)="empezarLibro(libro)">
+              <ion-icon name="play" color="success"></ion-icon>
+            </ion-button>
+            <ion-button 
+              *ngIf="libro.estado === 'leyendo'" 
+              fill="clear" 
+              size="small" 
+              (click)="continuarLibro(libro)">
+              <ion-icon name="book-outline" color="primary"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" size="small" (click)="mostrarOpcionesLibro(libro)">
+              <ion-icon name="ellipsis-vertical"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vista Lista -->
+    <ion-list *ngIf="!vistaGrid" class="libros-lista">
+      <ion-item *ngFor="let libro of librosFiltrados" class="libro-item">
+        <div class="portada-mini" slot="start">
+          <img [src]="libro.portada" [alt]="libro.titulo" class="portada-pequena">
+          <div class="estado-mini" [ngClass]="'estado-' + libro.estado">
+            <ion-icon [name]="getEstadoIcon(libro.estado)" size="small"></ion-icon>
+          </div>
+        </div>
+        
+        <ion-label>
+          <h2>{{ libro.titulo }}</h2>
+          <p>{{ libro.autor }}</p>
+          <div *ngIf="libro.progreso && libro.progreso > 0" class="progreso-lista">
+            <ion-progress-bar [value]="libro.progreso" color="success"></ion-progress-bar>
+            <span>{{ (libro.progreso * 100) | number:'1.0-0' }}%</span>
+          </div>
+          <p class="metadata">
+            <span class="estado-texto">{{ getEstadoTexto(libro.estado) }}</span>
+            <span *ngIf="libro.fechaAgregado"> • {{ libro.fechaAgregado | date:'dd/MM/yyyy' }}</span>
+          </p>
+        </ion-label>
+
+        <div class="acciones-lista" slot="end">
+          <ion-button 
+            *ngIf="libro.estado === 'pendiente'" 
+            fill="clear" 
+            (click)="empezarLibro(libro)">
+            <ion-icon name="play" color="success"></ion-icon>
+          </ion-button>
+          <ion-button 
+            *ngIf="libro.estado === 'leyendo'" 
+            fill="clear" 
+            (click)="continuarLibro(libro)">
+            <ion-icon name="book-outline" color="primary"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" (click)="mostrarOpcionesLibro(libro)">
+            <ion-icon name="ellipsis-vertical"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-item>
+    </ion-list>
+
+    <!-- Mensaje cuando no hay resultados -->
+    <div *ngIf="librosFiltrados.length === 0" class="mensaje-vacio">
+      <ion-icon name="library-outline" size="large" color="medium"></ion-icon>
+      <h3>No se encontraron libros</h3>
+      <p *ngIf="filtroTexto">No hay libros que coincidan con "{{ filtroTexto }}"</p>
+      <p *ngIf="!filtroTexto && biblioteca.length === 0">Tu biblioteca está vacía</p>
+      <ion-button fill="outline" (click)="agregarLibro()">
+        <ion-icon name="add" slot="start"></ion-icon>
+        Agregar primer libro
+      </ion-button>
+    </div>
+
+    <!-- Estadísticas de la biblioteca -->
+    <ion-card class="estadisticas-biblioteca">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="stats-chart" color="secondary"></ion-icon>
+          Estadísticas de mi biblioteca
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <h4>{{ biblioteca.length }}</h4>
+            <p>Total de libros</p>
+          </div>
+          <div class="stat-item">
+            <h4>{{ contarPorEstado('leyendo') }}</h4>
+            <p>Leyendo</p>
+          </div>
+          <div class="stat-item">
+            <h4>{{ contarPorEstado('terminado') }}</h4>
+            <p>Terminados</p>
+          </div>
+          <div class="stat-item">
+            <h4>{{ contarPorEstado('pendiente') }}</h4>
+            <p>Por leer</p>
+          <div class="stat-item">
+            <h4>{{ contarPorEstado('pausado') }}</h4>
+            <p>Pausado</p>
+          </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

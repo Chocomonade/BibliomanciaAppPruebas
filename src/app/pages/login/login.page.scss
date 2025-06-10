@@ -1,0 +1,125 @@
+ion-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.background-img {
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+  position: fixed; // Cambiar a fixed para mantener el fondo
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.input-item {
+  margin-bottom: 1em;
+  --background: rgba(238, 236, 241, 0.8);
+  --border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  
+  // Eliminar líneas y bordes predeterminados de Ionic
+  --border-width: 0;
+  --inner-border-width: 0;
+  --highlight-color-focused: transparent;
+  --highlight-color-valid: transparent;
+  --highlight-color-invalid: transparent;
+  
+  // Personalizar el color del texto
+  ion-label {
+    color: #5e35b1; // Color de la etiqueta
+    font-weight: 500;
+  }
+  
+  ion-input {
+    --color: #333; // Color del texto ingresado
+    --placeholder-color: #888; // Color del placeholder
+  }
+  
+  // Efecto hover
+  &:hover {
+    --background: rgba(213, 205, 238, 0.9);
+    border-color: rgba(94, 53, 177, 0.3);
+  }
+  
+  // Efecto focus
+  &.item-has-focus {
+    --background: rgba(213, 205, 238, 1);
+    border-color: #5e35b1;
+    box-shadow: 0 0 0 2px rgba(94, 53, 177, 0.2);
+  }
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2em;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+
+.title {
+  font-family: 'Honey-Monly';
+  font-size: 3rem;
+  color: #33175d;
+  margin-bottom: 0.2em;
+}
+
+.subtitle {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 1.5em;
+}
+
+.input-item {
+  margin-bottom: 1em;
+}
+
+.login-button {
+  margin-top: 1em;
+  background: #b5838d;
+  color: white;
+  border-radius: 12px;
+}
+
+.register-text {
+  margin-top: 1.2em;
+  font-size: 0.9rem;
+  color: #28272b;
+
+  a {
+    color: #7b4ac7;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}
+
+.register-text2 {
+  margin-top: 0em;
+  font-size: 0.9rem;
+  color: #6d6875;
+
+  a {
+    color: #7b4ac7;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,224 @@
+// Estilos para el libro actual
+.libro-actual-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(140, 100, 200, 0.1);
+  transition: transform 0.2s ease;
+
+  .libro-actual-content {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    .portada-container {
+      flex-shrink: 0;
+    }
+
+    .portada-grande {
+      width: 120px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(140, 100, 200, 0.2);
+      border: 1px solid #502b87;
+    }
+
+    .libro-info {
+      flex: 1;
+
+      h3 {
+        margin: 0 0 8px 0;
+        font-size: 18px;
+        font-weight: 600;
+        color: #5e3e9c;
+      }
+
+      p {
+        margin: 0 0 16px 0;
+        color: #442f67;
+        font-style: italic;
+      }
+
+      .progreso {
+        .progreso-text {
+          font-size: 12px;
+          color: #432a6e;
+          margin-top: 4px;
+          display: block;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.progreso-button {
+  margin-top: 12px;
+  --color: #9c7dde;
+  font-weight: 600;
+}
+
+// Libros por leer
+.libro-item {
+  --background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(120, 80, 180, 0.1);
+
+  .libro-miniatura {
+    width: 60px;
+    height: 80px;
+    margin-right: 12px;
+  }
+
+  .portada-pequena {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(140, 100, 200, 0.1);
+    border: 1px solid #ccb4ea;
+  }
+
+  ion-label {
+    h3 {
+      margin: 0 0 4px 0;
+      font-size: 14px;
+      font-weight: 500;
+      color: #4d3374;
+    }
+
+    p {
+      margin: 0;
+      font-size: 12px;
+      color: #442f67;
+    }
+  }
+}
+
+// Estadísticas
+.estadisticas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    ion-icon {
+      font-size: 24px;
+      color: #000000;
+    }
+
+    h4 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 600;
+      color: #4a2c77;
+    }
+
+    p {
+      margin: 0;
+      font-size: 12px;
+      color: #24173e;
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 480px) {
+  .libro-actual-content {
+    flex-direction: column;
+    text-align: center;
+
+    .portada-grande {
+      align-self: center;
+    }
+  }
+
+  .estadisticas-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Placeholder para imágenes
+.portada-grande, .portada-pequena {
+  background: linear-gradient(135deg, #d3c0f0, #713aa5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+
+  &::before {
+    content: '📚';
+    font-size: 24px;
+  }
+}
+
+ion-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(120, 90, 180, 0.1);
+  border: 1px solid #e3d4f5;
+}
+
+ion-card-title {
+  font-size: 1.2rem;
+  color: #5e3e9c;
+  font-weight: bold;
+}
+
+.seccion {
+  margin-bottom: 24px;
+}
+
+ion-card-content {
+  color: #4d3a77;
+  font-size: 0.95rem;
+}
+
+ion-icon {
+  color: #7b60c0 !important;
+}
+
+ion-button[color="tertiary"] {
+  --background: #523390;
+  --color: white;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+ion-button.progreso-button {
+  --color: #5e3e9c; /* 💜 color del texto */
+  --border-color: #5e3e9c; /* 💜 borde */
+  --border-radius: 8px;
+  font-weight: 600;
+}
+
+ion-button.progreso-button ion-icon {
+  color: #5e3e9c;
+}
+
+
+ion-button.progreso-button:hover {
+  --border-color: #7d60bf;
+  --color: #7d60bf;
+}
+
+ion-icon {
+  color: #442f67
+}

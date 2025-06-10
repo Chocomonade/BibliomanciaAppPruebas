@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap');
+
+.biblioteca-container {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 16px;
+  font-family: 'Quicksand', sans-serif;
+  color: #443055;
+}
+
+ion-toolbar {
+  --background: #d8c7ec;
+  --color: #2c1e3f;
+}
+
+ion-title {
+  font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
+}
+
+ion-searchbar {
+  --background: #fdf8ff;
+  --color: #3b2e4a;
+  --placeholder-color: #a188b2;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.filtros-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+ion-chip {
+  font-family: 'Quicksand', sans-serif;
+  border-radius: 16px;
+  background-color: #f1e3fb;
+  color: #4e386c;
+}
+
+.agregar-libro-btn {
+  margin: 16px 0;
+  --background: #e7d6ff;
+  --color: #4c2d72;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.libros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.libro-card-grid {
+  background-color: #f9f3fe;
+  padding: 8px;
+  border-radius: 12px;
+  box-shadow: 2px 2px 8px rgba(110, 80, 150, 0.1);
+}
+
+.portada-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.portada-libro {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.estado-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: #e6d4f5;
+  border-radius: 50%;
+  padding: 6px;
+}
+
+.progreso-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.libro-info-grid {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.libro-info-grid h3 {
+  font-size: 1rem;
+  margin: 4px 0;
+  color: #4b2e6d;
+}
+
+.libro-info-grid .autor {
+  font-size: 0.85rem;
+  color: #8167a2;
+}
+
+.acciones-grid ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  --border-radius: 8px;
+}
+
+.mensaje-vacio {
+  text-align: center;
+  margin-top: 40px;
+  color: #a388b6;
+}
+
+.estadisticas-biblioteca {
+  margin-top: 32px;
+  background-color: #f3e5ff;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  text-align: center;
+}
+
+.stat-item h4 {
+  font-size: 1.2rem;
+  margin: 4px 0;
+  color: #5b3a7d;
+}
+
+.stat-item p {
+  font-size: 0.85rem;
+  color: #8567a4;
+}
+
+.libros-lista {
+  background-color: transparent;
+}
+
+.libro-item {
+  --background: #f8f3fc;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(100, 80, 140, 0.08);
+  padding: 8px;
+}
+
+.portada-mini {
+  position: relative;
+  width: 48px;
+  height: 70px;
+  margin-right: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.portada-pequena {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(150, 130, 200, 0.4);
+}
+
+.estado-mini {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  background: #e3d4f5;
+  border-radius: 50%;
+  padding: 3px;
+  font-size: 0.6rem;
+}
+
+ion-label h2 {
+  font-size: 1rem;
+  color: #4a3268;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+ion-label p {
+  font-size: 0.8rem;
+  color: #7c629d;
+  margin: 2px 0;
+}
+
+.progreso-lista {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.progreso-lista ion-progress-bar {
+  width: 100%;
+  height: 6px;
+  --background: #ddd2f4;
+  --progress-background: #8b6fc6;
+  border-radius: 4px;
+}
+
+.progreso-lista span {
+  font-size: 0.75rem;
+  color: #654c82;
+  white-space: nowrap;
+}
+
+.estado-texto {
+  color: #9473c0;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.acciones-lista ion-button {
+  --padding-start: 0;
+  --padding-end: 0;
+  margin-left: 4px;
+}
+
+

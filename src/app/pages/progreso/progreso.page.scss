@@ -1,0 +1,157 @@
+ion-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.book-info {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(130, 100, 180, 0.15);
+}
+
+.book-cover {
+  width: 80px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid rgba(120, 90, 180, 0.4);
+  box-shadow: 0 2px 8px rgba(90, 60, 140, 0.15);
+}
+
+.book-details {
+  flex: 1;
+}
+
+.book-details h2 {
+  margin: 0 0 8px 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #5e3e9c;
+}
+
+.book-details p {
+  margin: 4px 0;
+  color: #735d9a;
+}
+
+.progress-info {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(6px);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(130, 100, 180, 0.15);
+}
+
+.progress-info h3 {
+  margin: 0 0 16px 0;
+  font-size: 1.4em;
+  color: #5e3e9c;
+}
+
+ion-progress-bar {
+  margin: 16px 0;
+  height: 8px;
+  --background: #d3c0f0;
+  --progress-background: #7b4ac7;
+  border-radius: 4px;
+}
+
+.progress-text {
+  font-weight: bold;
+  margin: 8px 0 0 0;
+  color: #432a6e;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(120, 90, 180, 0.15);
+}
+
+.history-main {
+  flex: 1;
+}
+
+.history-main h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.1em;
+  color: #4a2c77;
+}
+
+.history-main p {
+  margin: 2px 0;
+  font-size: 0.9em;
+  color: #735d9a;
+}
+
+.history-main .notes {
+  font-style: italic;
+  color: #5e3e9c;
+}
+
+.no-history {
+  text-align: center;
+  color: #9279b6;
+  font-style: italic;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(140, 100, 200, 0.15);
+}
+
+ion-card {
+  --background: rgba(255, 255, 255, 0.4);
+  --color: #4a2c77;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(120, 90, 180, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(120, 90, 180, 0.15);
+}
+
+ion-card-title {
+  color: #5e3e9c;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+ion-button {
+  --color: #ffffff;
+  --background: #7b4ac7;
+  --background-hover: #6a3bb3;
+  --border-radius: 10px;
+  font-weight: 500;
+}
+
+ion-item {
+  --background: rgba(255, 255, 255, 0.3);
+  --border-color: rgba(120, 90, 180, 0.3);
+  --color: #4a2c77;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+ion-item ion-label {
+  color: #5e3e9c;
+  font-weight: 500;
+}
+
+ion-input, ion-textarea, ion-datetime {
+  --color: #4a2c77;
+  --placeholder-color: #9279b6;
+}

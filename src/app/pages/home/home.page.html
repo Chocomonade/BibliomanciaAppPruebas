@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Bibliomancia</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding background-img">
+  <div class="home-container">
+    <h2 class="saludo">Hola de nuevo, {{ nombreUsuario }} ✨</h2>
+
+    <!-- Libro actual con portada grande -->
+    <ion-card class="seccion libro-actual-card" (click)="irAProgreso()">
+      <ion-card-header>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <ion-card-title>Libro actual</ion-card-title>
+          <ion-button fill="clear" size="small" (click)="irAProgreso(); $event.stopPropagation()">
+            <ion-icon name="trending-up-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="libro-actual-content">
+          <div class="portada-container">
+            <img [src]="libroActual.portada" [alt]="libroActual.titulo" class="portada-grande">
+          </div>
+          <div class="libro-info">
+            <h3>{{ libroActual.titulo }}</h3>
+            <p>{{ libroActual.autor }}</p>
+            <div class="progreso">
+              <ion-progress-bar [value]="libroActual.progreso"></ion-progress-bar>  
+              <span class="progreso-text">{{ (libroActual.progreso * 100) | number:'1.0-0' }}% completado</span>
+            </div>
+            <ion-button 
+              fill="outline" 
+              size="small" 
+              class="progreso-button"
+              (click)="irAProgreso(); $event.stopPropagation()">
+              <ion-icon name="bookmark-outline" slot="start"></ion-icon>
+              Actualizar progreso
+            </ion-button>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Lista de libros por leer con portadas pequeñas -->
+    <ion-card class="seccion">
+      <ion-card-header>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <ion-card-title>Para leer más tarde</ion-card-title>
+          <ion-button fill="clear" size="small" (click)="agregarLibro()">
+            <ion-icon name="book" slot="start"></ion-icon>
+            <ion-icon name="add" size="small"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list>
+          <ion-item *ngFor="let libro of librosPorLeer" class="libro-item">
+            <div class="libro-miniatura" slot="start">
+              <img [src]="libro.portada" [alt]="libro.titulo" class="portada-pequena">
+            </div>
+            <ion-label>
+              <h3>{{ libro.titulo }}</h3>
+              <p>{{ libro.autor }}</p>
+            </ion-label>
+            <ion-button fill="clear" slot="end" (click)="empezarLibro(libro)">
+              <ion-icon name="play-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Estadísticas -->
+    <ion-card class="seccion">
+      <ion-card-header>
+        <ion-card-title>Estadísticas</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="estadisticas-grid">
+          <div class="stat-item">
+            <ion-icon name="book" color="primary"></ion-icon>
+            <div>
+              <h4>{{ estadisticas.librosTerminados }}</h4>
+              <p>Libros leídos</p>
+            </div>
+          </div>
+          <div class="stat-item">
+            <ion-icon name="time" color="secondary"></ion-icon>
+            <div>
+              <h4>{{ estadisticas.tiempoLectura }}</h4>
+              <p>Horas de lectura</p>
+            </div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-button expand="block" color="tertiary" (click)="irAMiBiblioteca()">
+      Mi Biblioteca
+    </ion-button>
+  </div>
+</ion-content>
