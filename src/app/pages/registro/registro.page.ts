@@ -102,13 +102,19 @@ export class RegistroPage {
     return;
   }
 
-  const alert = await this.alertCtrl.create({
+    const alert = await this.alertCtrl.create({
     header: '¡Registro exitoso!',
     message: 'Tu cuenta fue creada exitosamente.',
-    buttons: ['OK'],
+    buttons: [{
+      text: 'OK',
+      handler: () => {
+        this.router.navigate(['/login']);
+      }
+    }],
     cssClass: 'alert-success'
   });
   await alert.present();
+
 
   // Redirigir al login tras un pequeño delay
   setTimeout(() => {

@@ -1,16 +1,24 @@
-import { TestBed } from '@angular/core/testing';
+import { Injectable } from '@angular/core';
 
-import { UsuarioService } from './usuario.service';
+@Injectable({
+  providedIn: 'root'
+})
+export class UsuarioService {
+  private usuarios: Array<{ username: string, password: string }> = [];
 
-describe('UsuarioService', () => {
-  let service: UsuarioService;
+  constructor() {}
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(UsuarioService);
-  });
+  registrar(username: string, password: string): boolean {
+    const existe = this.usuarios.find(u => u.username === username);
+    if (existe) return false;
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-});
+    this.usuarios.push({ username, password });
+    console.log('Usuarios registrados:', this.usuarios);
+    return true;
+  }
+
+  validarLogin(username: string, password: string): boolean {
+    console.log('Usuarios disponibles:', this.usuarios);
+    return this.usuarios.some(u => u.username === username && u.password === password);
+  }
+}

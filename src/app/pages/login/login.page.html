@@ -7,12 +7,22 @@
 
     <ion-item lines="none" class="input-item">
       <ion-label position="stacked">Usuario</ion-label>
-      <ion-input type="text" [(ngModel)]="username"></ion-input>
+      <ion-input 
+        type="text"
+        name="username"
+        placeholder="Usuario"
+        [(ngModel)]="username">
+      </ion-input>
     </ion-item>
 
     <ion-item lines="none" class="input-item">
       <ion-label position="stacked">Contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
+      <ion-input 
+        type="password"
+        name="password"
+        placeholder="Contraseña"
+        [(ngModel)]="password">
+      </ion-input>
     </ion-item>
 
     <ion-button expand="block" color="tertiary" class="login-button" (click)="login()">
@@ -25,5 +35,6 @@
     </p>
   </div>
 </ion-content>
+
 
 
